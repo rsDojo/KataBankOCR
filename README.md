@@ -1,2 +1,4 @@
 # KataBankOCR
-Repository for the KataBankOCR: http://codingdojo.org/kata/BankOCR/
+Repository for our KataBankOCR: http://codingdojo.org/kata/BankOCR/
+
+Work in progress :)
