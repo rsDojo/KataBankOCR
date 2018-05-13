@@ -1,34 +1,34 @@
 package com.rola.dojo.bank;
 
-import java.util.Arrays;
-import java.util.List;
+public class Parser {
 
-public final class Parser {
 	
-	private Parser() {
-	}
+	private final DigitReader reader = new DigitReader();
+	private final SingleParser parser = new SingleParser();
 
-	public static String parse(String input) {
-		return "123";
-	}
-
-	public static String parseSingle(String input) {
-		for (Digits digit : Digits.values()) {
-			if (digit.compare(input))
-				return digit.getText();
+	public String parse(final String input) {
+		if (input == null) {
+			throw new IllegalArgumentException();
 		}
-		return "?";
+		
+		final int numberOfDigits = getNumberOfDigits(input);
+		String output = "";
+		
+		for (int i=0; i<numberOfDigits; i++)
+		{
+			output += getParsedDigit(input, i);
+		}
+		return output;
 	}
 
-	public static int numberOfLines(String input) {
-		return input.split("\n").length;
+	private String getParsedDigit(final String input, int i) {
+		final String strDigit = reader.read(input, i);
+		
+		return parser.parseSingle(strDigit);
 	}
 
-	public static int lineLength(String input) {
-		return 0;
-	}
-
-	public static List<String> getDigits(String input123456789) {
-		return Arrays.asList("1","2","3","4","1","1","2","3","4");
+	private int getNumberOfDigits(final String input) {
+		final int numberOfDigits = input.split("\n")[0].length()/3;
+		return numberOfDigits;
 	}
 }

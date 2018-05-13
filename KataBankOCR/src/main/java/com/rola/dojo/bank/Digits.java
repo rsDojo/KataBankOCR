@@ -1,8 +1,8 @@
 package com.rola.dojo.bank;
 
-public enum Digits {
+enum Digits {
 
-	//@formatter:off
+	// @formatter:off
 	ZIFFER0 ( 
 			" _ " + 
 			"| |" + 
@@ -70,7 +70,7 @@ public enum Digits {
 		return matrix.equals(compareTo);
 	}
 
-	public String getText() {
+	String getText() {
 		return Integer.toString(ordinal());
 	}
 		
